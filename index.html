@@ -464,12 +464,14 @@
             }
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            border-color: var(--muted-blue);
+        @media (hover: hover) and (pointer: fine) {
+            .service-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+                border-color: var(--muted-blue);
+            }
         }
-
+        
         .service-card h3 {
             font-size: 1.5rem;
             font-weight: 600;
