@@ -712,11 +712,10 @@
         .fade-in-section {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .fade-in-section.visible {
-            transform: translateY(0);
+            animation: slideUp 0.6s ease forwards;
         }
     </style>
 </head>
