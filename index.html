@@ -1196,12 +1196,12 @@
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
                 }
             });
         }, observerOptions);
-
         // Observe all fade-in elements
         document.querySelectorAll('.fade-in-section').forEach(element => {
             observer.observe(element);
