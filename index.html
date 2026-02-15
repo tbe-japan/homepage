@@ -223,25 +223,30 @@
         }
 
         :root {
-            --charcoal: #36454F;
-            --slate: #6B7280;
-            --off-white: #F9FAFB;
-            --muted-blue: #4B5C6B;
-            --warm-gray: #9CA3AF;
-            --sage: #6B8E7F;
+            --primary-blue: #2563EB;
+            --primary-dark: #1E40AF;
+            --secondary-teal: #0891B2;
+            --accent-purple: #7C3AED;
+            --accent-green: #059669;
+            --text-dark: #1F2937;
+            --text-medium: #4B5563;
+            --text-light: #6B7280;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --border-light: #E5E7EB;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--charcoal);
-            background-color: var(--off-white);
+            color: var(--text-dark);
+            background-color: var(--bg-light);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         /* Header */
         header {
-            background-color: white;
+            background-color: var(--bg-white);
             padding: 1.5rem 2rem;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             position: sticky;
@@ -266,7 +271,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 600;
-            color: var(--charcoal);
+            color: var(--primary-blue);
             letter-spacing: 0.5px;
         }
 
@@ -277,7 +282,7 @@
         }
 
         .nav-links a {
-            color: var(--slate);
+            color: var(--text-medium);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
@@ -291,12 +296,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--muted-blue);
+            background-color: var(--primary-blue);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--muted-blue);
+            color: var(--primary-blue);
         }
 
         .nav-links a:hover::after {
@@ -318,7 +323,7 @@
         .hero-wrapper {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(to bottom, #ffffff 0%, var(--off-white) 100%);
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 50%, #E0E7FF 100%);
         }
 
         .wave-container {
@@ -328,7 +333,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.4;
+            opacity: 0.5;
         }
 
         #waveCanvas {
@@ -346,14 +351,14 @@
         .hero h1 {
             font-size: 3rem;
             font-weight: 600;
-            color: var(--charcoal);
+            color: var(--text-dark);
             margin-bottom: 1.5rem;
             line-height: 1.2;
         }
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--slate);
+            color: var(--text-medium);
             max-width: 700px;
             margin: 0 auto 2.5rem;
         }
@@ -367,7 +372,7 @@
 
         .btn {
             padding: 1rem 2rem;
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -377,31 +382,32 @@
         }
 
         .btn-primary {
-            background-color: var(--charcoal);
+            background-color: var(--primary-blue);
             color: white;
         }
 
         .btn-primary:hover {
-            background-color: var(--muted-blue);
+            background-color: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
         }
 
         .btn-secondary {
             background-color: transparent;
-            color: var(--charcoal);
-            border: 2px solid var(--slate);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
         }
 
         .btn-secondary:hover {
-            border-color: var(--muted-blue);
-            color: var(--muted-blue);
+            background-color: var(--primary-blue);
+            color: white;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
         /* Services Section */
         .services {
-            background-color: white;
+            background-color: var(--bg-white);
             padding: 5rem 2rem;
         }
 
@@ -415,13 +421,13 @@
             font-size: 2.25rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--charcoal);
+            color: var(--text-dark);
         }
 
         .section-subtitle {
             text-align: center;
             font-size: 1.125rem;
-            color: var(--slate);
+            color: var(--text-light);
             margin-bottom: 3rem;
             max-width: 600px;
             margin-left: auto;
@@ -436,22 +442,44 @@
         }
 
         .service-card {
-            background-color: var(--off-white);
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
             padding: 2.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid var(--border-light);
             opacity: 0;
             transform: translateY(30px);
+            position: relative;
+            overflow: hidden;
         }
 
-.service-card:not(.visible) svg * {
-    animation-play-state: paused !important;
-}
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-teal));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
 
-.service-card.visible svg * {
-    animation-play-state: running !important;
-}
+        .service-card:nth-child(2)::before {
+            background: linear-gradient(90deg, var(--accent-purple), var(--primary-blue));
+        }
+
+        .service-card:nth-child(3)::before {
+            background: linear-gradient(90deg, var(--secondary-teal), var(--accent-green));
+        }
+
+        .service-card:not(.visible) svg * {
+            animation-play-state: paused !important;
+        }
+
+        .service-card.visible svg * {
+            animation-play-state: running !important;
+        }
 
         .service-card.visible {
             animation: slideUp 0.6s ease forwards;
@@ -467,8 +495,12 @@
         @media (hover: hover) and (pointer: fine) {
             .service-card:hover {
                 transform: translateY(-8px);
-                box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-                border-color: var(--muted-blue);
+                box-shadow: 0 12px 28px rgba(37, 99, 235, 0.15);
+                border-color: var(--primary-blue);
+            }
+
+            .service-card:hover::before {
+                transform: scaleX(1);
             }
         }
         
@@ -476,20 +508,28 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
-            color: var(--charcoal);
+            color: var(--text-dark);
         }
 
         .service-descriptor {
             font-size: 0.875rem;
-            color: var(--muted-blue);
-            font-weight: 500;
+            color: var(--primary-blue);
+            font-weight: 600;
             margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
+        .service-card:nth-child(2) .service-descriptor {
+            color: var(--accent-purple);
+        }
+
+        .service-card:nth-child(3) .service-descriptor {
+            color: var(--secondary-teal);
+        }
+
         .service-card p {
-            color: var(--slate);
+            color: var(--text-medium);
             margin-bottom: 1.5rem;
         }
 
@@ -502,7 +542,7 @@
             padding-left: 1.5rem;
             position: relative;
             margin-bottom: 0.5rem;
-            color: var(--slate);
+            color: var(--text-medium);
             font-size: 0.9375rem;
         }
 
@@ -510,18 +550,26 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--sage);
+            color: var(--accent-green);
             font-weight: 600;
         }
 
         .learn-more {
-            color: var(--muted-blue);
+            color: var(--primary-blue);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             transition: gap 0.3s ease;
+        }
+
+        .service-card:nth-child(2) .learn-more {
+            color: var(--accent-purple);
+        }
+
+        .service-card:nth-child(3) .learn-more {
+            color: var(--secondary-teal);
         }
 
         .learn-more:hover {
@@ -531,13 +579,29 @@
         /* Why TBE Section */
         .why-tbe {
             padding: 5rem 2rem;
-            background-color: var(--charcoal);
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-tbe::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(8, 145, 178, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .why-tbe-container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .why-tbe .section-title {
@@ -545,7 +609,7 @@
         }
 
         .why-tbe .section-subtitle {
-            color: var(--warm-gray);
+            color: #94A3B8;
         }
 
         .benefits-grid {
@@ -558,6 +622,17 @@
         .benefit {
             opacity: 0;
             transform: translateY(30px);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .benefit:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+            border-color: var(--primary-blue);
         }
 
         .benefit.visible {
@@ -567,8 +642,32 @@
         .benefit-number {
             font-size: 2.5rem;
             font-weight: 600;
-            color: var(--muted-blue);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
+        }
+
+        .benefit:nth-child(2) .benefit-number {
+            background: linear-gradient(135deg, var(--accent-purple), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .benefit:nth-child(3) .benefit-number {
+            background: linear-gradient(135deg, var(--secondary-teal), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .benefit:nth-child(4) .benefit-number {
+            background: linear-gradient(135deg, var(--accent-green), var(--secondary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .benefit h3 {
@@ -578,14 +677,14 @@
         }
 
         .benefit p {
-            color: var(--warm-gray);
+            color: #CBD5E1;
             line-height: 1.7;
         }
 
         /* CTA Section */
         .cta-section {
             padding: 5rem 2rem;
-            background-color: white;
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
             text-align: center;
         }
 
@@ -598,19 +697,19 @@
             font-size: 2.25rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--charcoal);
+            color: var(--text-dark);
         }
 
         .cta-section p {
             font-size: 1.125rem;
-            color: var(--slate);
+            color: var(--text-medium);
             margin-bottom: 2rem;
         }
 
         /* Footer */
         footer {
-            background-color: var(--charcoal);
-            color: var(--warm-gray);
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            color: #94A3B8;
             padding: 3rem 2rem 1.5rem;
         }
 
@@ -639,17 +738,17 @@
         }
 
         .footer-section a {
-            color: var(--warm-gray);
+            color: #94A3B8;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer-section a:hover {
-            color: white;
+            color: var(--primary-blue);
         }
 
         .footer-bottom {
-            border-top: 1px solid var(--slate);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 1.5rem;
             text-align: center;
             font-size: 0.875rem;
@@ -661,7 +760,7 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--charcoal);
+            color: var(--text-dark);
             cursor: pointer;
         }
 
@@ -776,38 +875,34 @@
                             </style>
                           </defs>
                           
-                          <!-- Static background square -->
-                          <rect x="10" y="10" width="180" height="180" rx="10" fill="#f0f4f8"/>
+                          <rect x="10" y="10" width="180" height="180" rx="10" fill="#EFF6FF"/>
                           
-                          <!-- Central building/company icon -->
-                          <rect x="85" y="70" width="30" height="40" rx="2" fill="#3b82f6" opacity="0.2"/>
-                          <rect x="85" y="70" width="30" height="40" rx="2" fill="none" stroke="#3b82f6" stroke-width="2"/>
-                          <rect x="90" y="77" width="5" height="5" fill="#3b82f6" opacity="0.5"/>
-                          <rect x="105" y="77" width="5" height="5" fill="#3b82f6" opacity="0.5"/>
-                          <rect x="90" y="87" width="5" height="5" fill="#3b82f6" opacity="0.5"/>
-                          <rect x="105" y="87" width="5" height="5" fill="#3b82f6" opacity="0.5"/>
-                          <rect x="90" y="97" width="5" height="5" fill="#3b82f6" opacity="0.5"/>
-                          <rect x="105" y="97" width="5" height="5" fill="#3b82f6" opacity="0.5"/>
+                          <rect x="85" y="70" width="30" height="40" rx="2" fill="#DBEAFE"/>
+                          <rect x="85" y="70" width="30" height="40" rx="2" fill="none" stroke="#2563EB" stroke-width="2"/>
+                          <rect x="90" y="77" width="5" height="5" fill="#2563EB" opacity="0.5"/>
+                          <rect x="105" y="77" width="5" height="5" fill="#2563EB" opacity="0.5"/>
+                          <rect x="90" y="87" width="5" height="5" fill="#2563EB" opacity="0.5"/>
+                          <rect x="105" y="87" width="5" height="5" fill="#2563EB" opacity="0.5"/>
+                          <rect x="90" y="97" width="5" height="5" fill="#2563EB" opacity="0.5"/>
+                          <rect x="105" y="97" width="5" height="5" fill="#2563EB" opacity="0.5"/>
                           
-                          <!-- Three people icons -->
                           <g class="person1">
-                            <circle cx="55" cy="130" r="8" fill="#3b82f6"/>
-                            <path d="M 45 145 Q 45 138 55 138 Q 65 138 65 145 L 65 155 L 45 155 Z" fill="#3b82f6"/>
+                            <circle cx="55" cy="130" r="8" fill="#2563EB"/>
+                            <path d="M 45 145 Q 45 138 55 138 Q 65 138 65 145 L 65 155 L 45 155 Z" fill="#2563EB"/>
                           </g>
                           
                           <g class="person2">
-                            <circle cx="100" cy="140" r="8" fill="#3b82f6"/>
-                            <path d="M 90 155 Q 90 148 100 148 Q 110 148 110 155 L 110 165 L 90 165 Z" fill="#3b82f6"/>
+                            <circle cx="100" cy="140" r="8" fill="#2563EB"/>
+                            <path d="M 90 155 Q 90 148 100 148 Q 110 148 110 155 L 110 165 L 90 165 Z" fill="#2563EB"/>
                           </g>
                           
                           <g class="person3">
-                            <circle cx="145" cy="130" r="8" fill="#3b82f6"/>
-                            <path d="M 135 145 Q 135 138 145 138 Q 155 138 155 145 L 155 155 L 135 155 Z" fill="#3b82f6"/>
+                            <circle cx="145" cy="130" r="8" fill="#2563EB"/>
+                            <path d="M 135 145 Q 135 138 145 138 Q 155 138 155 145 L 155 155 L 135 155 Z" fill="#2563EB"/>
                           </g>
                           
-                          <!-- Checkmark for compliance -->
                           <g class="checkmark">
-                            <circle cx="140" cy="60" r="15" fill="#10b981" opacity="0.9"/>
+                            <circle cx="140" cy="60" r="15" fill="#059669" opacity="0.9"/>
                             <path d="M 133 60 L 138 65 L 147 54" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                           </g>
                         </svg>
@@ -856,46 +951,41 @@
                             </style>
                           </defs>
                           
-                          <!-- Static background square -->
-                          <rect x="10" y="10" width="180" height="180" rx="10" fill="#f0f4f8"/>
+                          <rect x="10" y="10" width="180" height="180" rx="10" fill="#F5F3FF"/>
                           
-                          <!-- Target circles -->
-                          <circle cx="100" cy="100" r="70" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.2" class="ring3"/>
-                          <circle cx="100" cy="100" r="50" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.3" class="ring2"/>
-                          <circle cx="100" cy="100" r="30" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.4" class="ring1"/>
+                          <circle cx="100" cy="100" r="70" fill="none" stroke="#7C3AED" stroke-width="2" opacity="0.2" class="ring3"/>
+                          <circle cx="100" cy="100" r="50" fill="none" stroke="#7C3AED" stroke-width="2" opacity="0.3" class="ring2"/>
+                          <circle cx="100" cy="100" r="30" fill="none" stroke="#7C3AED" stroke-width="2" opacity="0.4" class="ring1"/>
                           
-                          <!-- Center bullseye -->
-                          <circle cx="100" cy="100" r="15" fill="#3b82f6" class="target-center"/>
+                          <circle cx="100" cy="100" r="15" fill="#7C3AED" class="target-center"/>
                           <circle cx="100" cy="100" r="8" fill="white" class="target-center"/>
                           
-                          <!-- Rotating outer ring with markers -->
                           <g class="outer-ring">
-                            <circle cx="100" cy="20" r="4" fill="#10b981"/>
-                            <circle cx="180" cy="100" r="4" fill="#10b981"/>
-                            <circle cx="100" cy="180" r="4" fill="#10b981"/>
-                            <circle cx="20" cy="100" r="4" fill="#10b981"/>
+                            <circle cx="100" cy="20" r="4" fill="#059669"/>
+                            <circle cx="180" cy="100" r="4" fill="#059669"/>
+                            <circle cx="100" cy="180" r="4" fill="#059669"/>
+                            <circle cx="20" cy="100" r="4" fill="#059669"/>
                           </g>
                           
-                          <!-- Candidate profiles -->
                           <g class="candidate1">
-                            <rect x="20" y="30" width="35" height="35" rx="3" fill="#f0f4f8" stroke="#3b82f6" stroke-width="2"/>
-                            <circle cx="37.5" cy="42" r="6" fill="#3b82f6"/>
-                            <rect x="30" y="50" width="15" height="2" rx="1" fill="#3b82f6"/>
-                            <rect x="28" y="55" width="19" height="2" rx="1" fill="#3b82f6" opacity="0.5"/>
+                            <rect x="20" y="30" width="35" height="35" rx="3" fill="#FAF5FF" stroke="#7C3AED" stroke-width="2"/>
+                            <circle cx="37.5" cy="42" r="6" fill="#7C3AED"/>
+                            <rect x="30" y="50" width="15" height="2" rx="1" fill="#7C3AED"/>
+                            <rect x="28" y="55" width="19" height="2" rx="1" fill="#7C3AED" opacity="0.5"/>
                           </g>
                           
                           <g class="candidate2">
-                            <rect x="145" y="30" width="35" height="35" rx="3" fill="#f0f4f8" stroke="#3b82f6" stroke-width="2"/>
-                            <circle cx="162.5" cy="42" r="6" fill="#3b82f6"/>
-                            <rect x="155" y="50" width="15" height="2" rx="1" fill="#3b82f6"/>
-                            <rect x="153" y="55" width="19" height="2" rx="1" fill="#3b82f6" opacity="0.5"/>
+                            <rect x="145" y="30" width="35" height="35" rx="3" fill="#FAF5FF" stroke="#7C3AED" stroke-width="2"/>
+                            <circle cx="162.5" cy="42" r="6" fill="#7C3AED"/>
+                            <rect x="155" y="50" width="15" height="2" rx="1" fill="#7C3AED"/>
+                            <rect x="153" y="55" width="19" height="2" rx="1" fill="#7C3AED" opacity="0.5"/>
                           </g>
                           
                           <g class="candidate3">
-                            <rect x="82.5" y="145" width="35" height="35" rx="3" fill="#f0f4f8" stroke="#3b82f6" stroke-width="2"/>
-                            <circle cx="100" cy="157" r="6" fill="#3b82f6"/>
-                            <rect x="92.5" y="165" width="15" height="2" rx="1" fill="#3b82f6"/>
-                            <rect x="90.5" y="170" width="19" height="2" rx="1" fill="#3b82f6" opacity="0.5"/>
+                            <rect x="82.5" y="145" width="35" height="35" rx="3" fill="#FAF5FF" stroke="#7C3AED" stroke-width="2"/>
+                            <circle cx="100" cy="157" r="6" fill="#7C3AED"/>
+                            <rect x="92.5" y="165" width="15" height="2" rx="1" fill="#7C3AED"/>
+                            <rect x="90.5" y="170" width="19" height="2" rx="1" fill="#7C3AED" opacity="0.5"/>
                           </g>
                         </svg>
 
@@ -943,51 +1033,47 @@
                             </style>
                           </defs>
                           
-                          <!-- Static background square -->
-                          <rect x="10" y="10" width="180" height="180" rx="10" fill="#f0f4f8"/>
+                          <rect x="10" y="10" width="180" height="180" rx="10" fill="#ECFDF5"/>
                           
-                          <!-- Document stack -->
                           <g class="doc1">
-                            <rect x="50" y="90" width="100" height="70" rx="4" fill="white" stroke="#3b82f6" stroke-width="2"/>
-                            <rect x="60" y="100" width="60" height="4" rx="2" fill="#3b82f6" opacity="0.6"/>
-                            <rect x="60" y="110" width="80" height="3" rx="1.5" fill="#3b82f6" opacity="0.3"/>
-                            <rect x="60" y="118" width="75" height="3" rx="1.5" fill="#3b82f6" opacity="0.3"/>
-                            <rect x="60" y="126" width="70" height="3" rx="1.5" fill="#3b82f6" opacity="0.3"/>
-                            <circle cx="135" cy="145" r="10" fill="#10b981" opacity="0.2"/>
-                            <path class="check1" d="M 130 145 L 133 148 L 140 140" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="50" y="90" width="100" height="70" rx="4" fill="white" stroke="#0891B2" stroke-width="2"/>
+                            <rect x="60" y="100" width="60" height="4" rx="2" fill="#0891B2" opacity="0.6"/>
+                            <rect x="60" y="110" width="80" height="3" rx="1.5" fill="#0891B2" opacity="0.3"/>
+                            <rect x="60" y="118" width="75" height="3" rx="1.5" fill="#0891B2" opacity="0.3"/>
+                            <rect x="60" y="126" width="70" height="3" rx="1.5" fill="#0891B2" opacity="0.3"/>
+                            <circle cx="135" cy="145" r="10" fill="#059669" opacity="0.2"/>
+                            <path class="check1" d="M 130 145 L 133 148 L 140 140" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </g>
                           
                           <g class="doc2">
-                            <rect x="55" y="75" width="100" height="70" rx="4" fill="white" stroke="#3b82f6" stroke-width="2"/>
-                            <rect x="65" y="85" width="60" height="4" rx="2" fill="#3b82f6" opacity="0.6"/>
-                            <rect x="65" y="95" width="80" height="3" rx="1.5" fill="#3b82f6" opacity="0.3"/>
-                            <rect x="65" y="103" width="75" height="3" rx="1.5" fill="#3b82f6" opacity="0.3"/>
-                            <rect x="65" y="111" width="70" height="3" rx="1.5" fill="#3b82f6" opacity="0.3"/>
-                            <circle cx="140" cy="130" r="10" fill="#10b981" opacity="0.2"/>
-                            <path class="check2" d="M 135 130 L 138 133 L 145 125" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="55" y="75" width="100" height="70" rx="4" fill="white" stroke="#0891B2" stroke-width="2"/>
+                            <rect x="65" y="85" width="60" height="4" rx="2" fill="#0891B2" opacity="0.6"/>
+                            <rect x="65" y="95" width="80" height="3" rx="1.5" fill="#0891B2" opacity="0.3"/>
+                            <rect x="65" y="103" width="75" height="3" rx="1.5" fill="#0891B2" opacity="0.3"/>
+                            <rect x="65" y="111" width="70" height="3" rx="1.5" fill="#0891B2" opacity="0.3"/>
+                            <circle cx="140" cy="130" r="10" fill="#059669" opacity="0.2"/>
+                            <path class="check2" d="M 135 130 L 138 133 L 145 125" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </g>
                           
                           <g class="doc3">
-                            <rect x="60" y="60" width="100" height="70" rx="4" fill="white" stroke="#3b82f6" stroke-width="2"/>
-                            <rect x="70" y="70" width="60" height="4" rx="2" fill="#3b82f6" opacity="0.6"/>
-                            <rect x="70" y="80" width="80" height="3" rx="1.5" fill="#3b82f6" opacity="0.3"/>
-                            <rect x="70" y="88" width="75" height="3" rx="1.5" fill="#3b82f6" opacity="0.3"/>
-                            <rect x="70" y="96" width="70" height="3" rx="1.5" fill="#3b82f6" opacity="0.3"/>
-                            <circle cx="145" cy="115" r="10" fill="#10b981" opacity="0.2"/>
-                            <path class="check3" d="M 140 115 L 143 118 L 150 110" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="60" y="60" width="100" height="70" rx="4" fill="white" stroke="#0891B2" stroke-width="2"/>
+                            <rect x="70" y="70" width="60" height="4" rx="2" fill="#0891B2" opacity="0.6"/>
+                            <rect x="70" y="80" width="80" height="3" rx="1.5" fill="#0891B2" opacity="0.3"/>
+                            <rect x="70" y="88" width="75" height="3" rx="1.5" fill="#0891B2" opacity="0.3"/>
+                            <rect x="70" y="96" width="70" height="3" rx="1.5" fill="#0891B2" opacity="0.3"/>
+                            <circle cx="145" cy="115" r="10" fill="#059669" opacity="0.2"/>
+                            <path class="check3" d="M 140 115 L 143 118 L 150 110" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </g>
                           
-                          <!-- Gear icon for processing -->
                           <g class="gear">
-                            <circle cx="40" cy="140" r="12" fill="#3b82f6" opacity="0.8"/>
+                            <circle cx="40" cy="140" r="12" fill="#0891B2" opacity="0.8"/>
                             <circle cx="40" cy="140" r="6" fill="white"/>
-                            <rect x="38" y="128" width="4" height="5" rx="1" fill="#3b82f6"/>
-                            <rect x="38" y="147" width="4" height="5" rx="1" fill="#3b82f6"/>
-                            <rect x="28" y="138" width="5" height="4" rx="1" fill="#3b82f6"/>
-                            <rect x="47" y="138" width="5" height="4" rx="1" fill="#3b82f6"/>
+                            <rect x="38" y="128" width="4" height="5" rx="1" fill="#0891B2"/>
+                            <rect x="38" y="147" width="4" height="5" rx="1" fill="#0891B2"/>
+                            <rect x="28" y="138" width="5" height="4" rx="1" fill="#0891B2"/>
+                            <rect x="47" y="138" width="5" height="4" rx="1" fill="#0891B2"/>
                           </g>
                         </svg>
-
 
                         <div class="service-descriptor">Your operations team in Japan</div>
                         <h3 itemprop="name">Back Office Outsourcing</h3>
@@ -1095,12 +1181,12 @@
         window.addEventListener('resize', resizeCanvas);
 
         const waves = [
-            { amplitude: 40, frequency: 0.015, speed: 0.03, yOffset: 0.25, color: 'rgba(54, 69, 79, 0.20)' },
-            { amplitude: 35, frequency: 0.02, speed: 0.025, yOffset: 0.35, color: 'rgba(75, 92, 107, 0.16)' },
-            { amplitude: 30, frequency: 0.025, speed: 0.02, yOffset: 0.45, color: 'rgba(107, 114, 128, 0.13)' },
-            { amplitude: 25, frequency: 0.03, speed: 0.015, yOffset: 0.55, color: 'rgba(156, 163, 175, 0.10)' },
-            { amplitude: 20, frequency: 0.035, speed: 0.022, yOffset: 0.65, color: 'rgba(75, 92, 107, 0.07)' },
-            { amplitude: 15, frequency: 0.04, speed: 0.018, yOffset: 0.75, color: 'rgba(54, 69, 79, 0.05)' }
+            { amplitude: 40, frequency: 0.015, speed: 0.03, yOffset: 0.25, color: 'rgba(37, 99, 235, 0.15)' },
+            { amplitude: 35, frequency: 0.02, speed: 0.025, yOffset: 0.35, color: 'rgba(124, 58, 237, 0.12)' },
+            { amplitude: 30, frequency: 0.025, speed: 0.02, yOffset: 0.45, color: 'rgba(8, 145, 178, 0.10)' },
+            { amplitude: 25, frequency: 0.03, speed: 0.015, yOffset: 0.55, color: 'rgba(5, 150, 105, 0.08)' },
+            { amplitude: 20, frequency: 0.035, speed: 0.022, yOffset: 0.65, color: 'rgba(37, 99, 235, 0.06)' },
+            { amplitude: 15, frequency: 0.04, speed: 0.018, yOffset: 0.75, color: 'rgba(124, 58, 237, 0.04)' }
         ];
 
         let time = 0;
@@ -1198,10 +1284,11 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Stop observing once animated
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
+
         // Observe all fade-in elements
         document.querySelectorAll('.fade-in-section').forEach(element => {
             observer.observe(element);
